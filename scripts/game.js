@@ -9,7 +9,6 @@ var questions = [
 ]
 
 function startGame() {
-    console.log("timeLeft", timeLeft)
     var gameInterval = setInterval(() => {
         console.log("timeLeft", timeLeft)
         timerSpan.textContent = timeLeft--;
