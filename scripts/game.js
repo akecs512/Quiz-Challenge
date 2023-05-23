@@ -19,5 +19,6 @@ function startGame() {
     }, 1000);
 }
 
-startButton.addEventListener("click", startGame);
+if (startButton)
+    startButton.addEventListener("click", startGame);
 
