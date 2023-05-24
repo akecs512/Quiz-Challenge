@@ -20,6 +20,8 @@ function startGame() {
     var question = document.getElementById("question-container")
     question.style.display = "block";
 
+    document.getElementById("before-start").style.display = "none";
+
     let choices = document.getElementById("question-answers0").children
 
     for (let index = 0; index < choices.length; index++) {
