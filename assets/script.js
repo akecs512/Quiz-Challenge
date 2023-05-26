@@ -4,7 +4,7 @@ var correctAnswer = ""
 var timeLeft = 75
 // call this an index, since it starts at 0
 var currentQuestionIndex = 0
-var totalQuestions = 2
+var totalQuestions = 5
 var containerString = "question-container"
 
 
@@ -13,8 +13,10 @@ function checkAnswer(event) {
 
     if (answer === correctAnswer) {
         document.getElementById("correctAnswer").style.display = 'block';
+        document.getElementById("wrongAnswer").style.display = 'none';
     } else {
         document.getElementById("wrongAnswer").style.display = 'block';
+        document.getElementById("correctAnswer").style.display = 'none';
     }
 
     // question count needs to match up with the index count
@@ -26,7 +28,6 @@ function checkAnswer(event) {
 }
 
 function displayQuestion(questionID) {
-
     correctAnswer = document.getElementById("answer" + questionID).innerHTML
     var question = document.getElementById(containerString + questionID)
     question.style.display = "block";
@@ -37,6 +38,7 @@ function displayQuestion(questionID) {
         element.addEventListener("click", checkAnswer)
     }
 }
+
 function displayNextQuestion() {
     hideQuestion(currentQuestionIndex)
     currentQuestionIndex++

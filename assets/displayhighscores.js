@@ -11,7 +11,6 @@ function clearHighScores(event) {
 showHighScores()
 function showHighScores() {
   const playerScores = JSON.parse(localStorage.getItem("playerScores"))
-  console.log(playerScores)
   if (!playerScores) return;
 
   let highScoresList = document.getElementById('high-scores-list');
