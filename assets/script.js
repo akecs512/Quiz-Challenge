@@ -2,7 +2,8 @@ var startButton = document.getElementById("start-button");
 var timerSpan = document.getElementById("time-left");
 var correctAnswer = ""
 var timeLeft = 75
-var currentQuestion = 0
+// call this an index, since it starts at 0
+var currentQuestionIndex = 0
 var totalQuestions = 2
 var containerString = "question-container"
 
@@ -17,18 +18,17 @@ function checkAnswer(event) {
     } else {
         document.getElementById("wrongAnswer").style.display = 'block';
     }
-    console.log(currentQuestion< totalQuestions)
 
-    if (currentQuestion < totalQuestions) {
+    // question count needs to match up with the index count
+    if (currentQuestionIndex < totalQuestions - 1) {
         displayNextQuestion()
     } else {
-        console.log(currentQuestion)
+        window.location.href = "/highscoreentry.html"
     }
 
 }
 
 function displayQuestion(questionID) {
-    console.log("heres")
     var question = document.getElementById(containerString + questionID)
     question.style.display = "block";
     let choices = document.getElementById(containerString + questionID).children
@@ -39,9 +39,9 @@ function displayQuestion(questionID) {
     }
 }
 function displayNextQuestion() {
-    hideQuestion(currentQuestion)
-    currentQuestion++
-    displayQuestion(currentQuestion)
+    hideQuestion(currentQuestionIndex)
+    currentQuestionIndex++
+    displayQuestion(currentQuestionIndex)
 
 }
 
