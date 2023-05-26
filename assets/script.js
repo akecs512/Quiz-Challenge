@@ -7,8 +7,6 @@ var currentQuestionIndex = 0
 var totalQuestions = 2
 var containerString = "question-container"
 
-correctAnswer = document.getElementById("answer0").innerHTML
-
 
 function checkAnswer(event) {
     let answer = event.target.innerHTML
@@ -25,10 +23,11 @@ function checkAnswer(event) {
     } else {
         window.location.href = "/highscoreentry.html?timeLeft=" + timeLeft
     }
-
 }
 
 function displayQuestion(questionID) {
+
+    correctAnswer = document.getElementById("answer" + questionID).innerHTML
     var question = document.getElementById(containerString + questionID)
     question.style.display = "block";
     let choices = document.getElementById(containerString + questionID).children
@@ -42,30 +41,26 @@ function displayNextQuestion() {
     hideQuestion(currentQuestionIndex)
     currentQuestionIndex++
     displayQuestion(currentQuestionIndex)
-
 }
 
 function startGame() {
     document.getElementById("before-start").style.display = "none";
     displayQuestion(0)
+    timerSpan.innerHTML = timeLeft
 
-    // var gameInterval = setInterval(() => {
-    //     timerSpan.textContent = timeLeft--;
-
-
-    //     if (!timeLeft) {
-    //         clearInterval(gameInterval);
-    //         window.location.href = "highscore.html";
-
-    //     }
-    // }, 1000);
-
+    gameInterval = setInterval(() => {
+        timerSpan.innerHTML = --timeLeft;
+        if (!timeLeft) {
+            clearInterval(gameInterval);
+            window.location.href = "/highscoreentry.html?timeLeft=" + timeLeft
+        }
+    }, 1000);
 
 }
+
 function hideQuestion(questionID) {
     document.getElementById(containerString + questionID).style.display = "none";
 }
-
 
 startButton.addEventListener("click", startGame);
 
