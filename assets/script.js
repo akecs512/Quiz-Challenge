@@ -23,7 +23,7 @@ function checkAnswer(event) {
     if (currentQuestionIndex < totalQuestions - 1) {
         displayNextQuestion()
     } else {
-        window.location.href = "/highscoreentry.html"
+        window.location.href = "/highscoreentry.html?timeLeft=" + timeLeft
     }
 
 }
